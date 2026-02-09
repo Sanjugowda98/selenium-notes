@@ -1,0 +1,22 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
+opts=webdriver.ChromeOptions()
+opts.add_experimental_option("detach",True)
+driver=webdriver.Chrome(opts)
+
+ac_obj=ActionChains(driver)
+driver.get("https://testautomationpractice.blogspot.com/")
+time.sleep(2)
+
+ele=driver.find_element("xpath",'//h2[text()="SVG Elements"]')
+ac_obj.scroll_to_element(ele).perform()
+time.sleep(2)
+
+dragable=driver.find_element("xpath",'//div[@id="draggable"]')
+time.sleep(1)
+dropable=driver.find_element("xpath",'//div[@id="droppable"]')
+time.sleep(1)
+ac_obj.drag_and_drop(dragable,dropable).perform()

@@ -1,0 +1,22 @@
+import time
+from selenium import webdriver
+opts=webdriver.ChromeOptions()
+opts.add_experimental_option("detach",True)
+driver=webdriver.Chrome(opts)
+driver.get("https://www.myntra.com/")
+driver.maximize_window()
+time.sleep(2)
+#driver.minimize_window()
+#time.sleep(2)
+driver.back()
+time.sleep(2)
+driver.forward()
+time.sleep(2)
+driver.refresh()
+time.sleep(2)
+print(driver.current_url)
+print(driver.title)
+print(driver.name)
+driver.save_screenshot("myntra_homepage.png")
+driver.close()
+
